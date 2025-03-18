@@ -39,3 +39,16 @@ tf = tc * 9 / 5 + 32
 print(f'{tf=} ===> {tc=}')
 
 print(2 ** 3, 2 ** (1/2), 2 ** (-1/2))
+
+#print(3/0)
+
+a = "True"
+print(type(a))
+
+a ='3'
+b=float(a)
+print(b**int(a))
+
+a = '3.5'
+b =  4
+print (a * b)
