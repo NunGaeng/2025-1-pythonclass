@@ -1,7 +1,7 @@
 # 2025.3.18
 # 파이썬 리스트 : 한개의 변수에 여러 값을 할당
 
-# dlseprtld
+# 인덱싱
 colors = ['red', 'blue', 'green']
 print(colors)
 print(colors[1])
@@ -38,6 +38,21 @@ print(colors[:])
 # 패킹, 언패킹
 c1, _, c2, c3, _, _ = colors
 print(c1, c2, c3)
+
+# 다차원 리스트
+
+colors = ['red', 'blue', 'green']
+cities = ['서울', '부산', '인천', '의정부', '대전', '강릉', '논산', '포항']
+combi = [colors, cities]
+print(combi)
+print(combi[1][2]) # 인천
+#print(combi[2][3]) # 에러 발생
+bigcombi = [combi, [0,2,7]]
+print(bigcombi)
+print(len(bigcombi))
+print(bigcombi[0][1][2]) # 인천
+print(bigcombi[1][1])
+
 
 # QUIZ
 first = ["egg", "salad", "bread", "soup", "canafe"]
