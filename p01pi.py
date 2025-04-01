@@ -9,14 +9,11 @@ while n <= 10000:
     n = n + 1
 print(result*4)
 
-pilist = [
-
-]
-
 # for문
 n = 1
 p = 1
-for n in range(1, 100000):
+pilist = []
+for n in range(1, 200):
     p = p * ((2 * n + 1) ** 2 - 1) / ((2 * n + 1) ** 2)
     #print(p*4, ',')
     pilist.append(p*4)
