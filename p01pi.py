@@ -3,20 +3,26 @@ n = 1
 result = 1
 
 # while문
-while n <= 100:
+while n <= 10000:
     a = ((2 * n + 1) ** 2 - 1) / ((2 * n + 1) ** 2)
     result = result * a
     n = n + 1
 print(result*4)
 
+pilist = [
+
+]
+
 # for문
-b = 1
+n = 1
 p = 1
-for b in range(1, 100):
-    p = ((2 * b + 1) ** 2 - 1) / ((2 * b + 1) ** 2)
-print(p*4)
+for n in range(1, 100000):
+    p = p * ((2 * n + 1) ** 2 - 1) / ((2 * n + 1) ** 2)
+    #print(p*4, ',')
+    pilist.append(p*4)
+
 
 
 import matplotlib.pyplot as plt
-plt.plot([1,3,4])
+plt.plot(pilist)
 plt.show()
