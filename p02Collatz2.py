@@ -8,9 +8,12 @@ import numpy as np
 import statistics
 import time
 
+from mkl import second
+
+#from p02Collatz import maxvalue
 from p02Collatzfunc import collatz
 
-MAXNUM = 1000
+MAXNUM = 100
 
 # 2025.4.9 우박수 프로젝트 두번째: 기본 통계량 구하기
 # numpy 배열, list 두가지 방식으로 시험
@@ -21,12 +24,33 @@ MAXNUM = 1000
 start = time.time()
 
 ncountl = []
+maxvalue = 0
+maxvaluen = 0
+second_value = 0
+third_value = 0
+
 for n in range(1,MAXNUM):
     ncount = collatz(n)
     ncountl.append(ncount)
 
+for n_count in ncountl[:]:
+    if n_count > maxvalue:
+        second_value = maxvalue
+        maxvalue = n_count
+    elif n_count > second_value:
+        second_value = n_count
+    elif n_count > third_value:
+        third_value = n_count
+
+nmax = ncountl.index(max(ncountl))+1
+second_nmax = ncountl.index(second_value)+1
+third_nmax = ncountl.index(third_value)+1
+
 # 최대값, 평균, 중앙값, 표준편차, 최빈값
 print(f'최대값 = {max(ncountl)}')
+print(f'해당숫자 {nmax}')
+print(f'2번째 값 {second_nmax}')
+print(f'3번째 값 {third_nmax}')
 print(f'평균 = {statistics.mean(ncountl):.5f}')
 print(f'중앙값 = {statistics.median(ncountl):.5f}')
 print(f'표준편차 = {statistics.stdev(ncountl):.5f}')
@@ -35,20 +59,37 @@ print(f'표준편차 = {statistics.stdev(ncountl):.5f}')
 end = time.time()
 print(f'{end - start:.5f}초가 걸렸습니다')
 
-start = time.time()
-
-
 # numpy
+start = time.time()
+maxvalue = 0
+second_value = 0
+third_value = 0
+
 ncounta = np.zeros(MAXNUM-1)
 for n in range(1,MAXNUM):
     #print(f'{n=}')
     ncount = collatz(n)
     ncounta[n-1] = ncount
 
+for n_count in ncounta[:]:
+    if n_count > maxvalue:
+        second_value = maxvalue
+        maxvalue = n_count
+    elif n_count > second_value:
+        second_value = n_count
+    elif n_count > third_value:
+        third_value = n_count
+
+nmax = np.argmax(ncounta)+1
+second_nmax = np.where(ncounta == second_value)[0][0]+1
+third_nmax = np.where(ncounta == third_value)[0][0]+1
 
 
 # 최대값, 평균, 중앙값, 표준편차, 최빈값
 print(f'최대값 = {np.max(ncounta)}')
+print(f'해당숫자 {nmax}')
+print(f'2번째 값 {second_nmax}')
+print(f'3번째 값 {third_nmax}')
 print(f'평균 = {np.mean(ncounta):.5f}')
 print(f'중앙값 = {np.median(ncounta):.5f}')
 print(f'표준편차 = {np.std(ncounta):.5f}')
