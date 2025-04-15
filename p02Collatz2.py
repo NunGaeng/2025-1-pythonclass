@@ -41,7 +41,6 @@ for n_count in ncountl[:]:
         second_value = n_count
     elif n_count > third_value:
         third_value = n_count
-
 nmax = ncountl.index(max(ncountl))+1
 second_nmax = ncountl.index(second_value)+1
 third_nmax = ncountl.index(third_value)+1
